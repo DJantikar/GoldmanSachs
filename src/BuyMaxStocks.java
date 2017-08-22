@@ -5,29 +5,30 @@ import java.math.*;
 import java.util.regex.*;
 
 class Stock{
-	long stockValue ;
-    long stockCount;
-	public long getStockValue() {
+	int stockValue ;
+    int stockCount;
+	public int getStockValue() {
 		return stockValue;
 	}
-	public long getStockCount() {
+	public int getStockCount() {
 		return stockCount;
 	}
-	public Stock(long stockValue, long stockCount) {
-		super();
+	public Stock(int stockValue, int stockCount) {
+		//super();
 		this.stockValue = stockValue;
 		this.stockCount = stockCount;
 	}	
 }
 
 public class BuyMaxStocks {
-    static long buyMaximumProducts(int n, long amount, long[] a) {
+    static long buyMaximumProducts(int n, long amount, int[] a) {
     	PriorityQueue<Stock> pq = new PriorityQueue<>(new Comparator<Stock>() {
 			@Override
 			public int compare(Stock s1, Stock s2) {	
 				
-				 long diff = s1.getStockValue() - s2.getStockValue();
-				 return diff == 0 ? 0 : (diff > 0 ? 1 : -1) ;
+				 int diff = s1.getStockValue() - s2.getStockValue();
+				 //return diff == 0 ? 0 : (diff > 0 ? 1 : -1) ;
+				 return diff;
 			}
 		});
     	
@@ -54,9 +55,9 @@ public class BuyMaxStocks {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
-        long[] arr = new long[n];
+        int[] arr = new int[n];
         for(int arr_i = 0; arr_i < n; arr_i++){
-            arr[arr_i] = in.nextLong();
+            arr[arr_i] = in.nextInt();
         }
         long k = in.nextInt();
         long result = buyMaximumProducts(n, k, arr);
